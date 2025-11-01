@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Wallet } from "lucide-react";
+import { Wallet, LogOut } from "lucide-react";
+import { useWallet } from "@/hooks/useWallet";
 
 const Navigation = () => {
   const location = useLocation();
+  const { address, isConnected, isConnecting, connect, disconnect } = useWallet();
   
   const navLinks = [
     { path: "/", label: "Home" },
@@ -43,9 +45,33 @@ const Navigation = () => {
             ))}
           </div>
 
-          <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground">
-            Connect Wallet
-          </Button>
+          {!isConnected ? (
+            <Button 
+              onClick={connect}
+              disabled={isConnecting}
+              className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground"
+            >
+              <Wallet className="h-4 w-4 mr-2" />
+              {isConnecting ? "Connecting..." : "Connect Wallet"}
+            </Button>
+          ) : (
+            <div className="flex items-center gap-2">
+              <div className="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 border border-primary/30">
+                <Wallet className="h-4 w-4 text-primary" />
+                <span className="text-sm font-mono text-primary">
+                  {address?.slice(0, 6)}...{address?.slice(-4)}
+                </span>
+              </div>
+              <Button 
+                onClick={disconnect}
+                variant="outline"
+                size="sm"
+                className="border-primary/50 hover:bg-primary/10"
+              >
+                <LogOut className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </nav>

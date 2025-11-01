@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Wallet, CheckCircle, Loader2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
+import WalletSignDemo from "@/components/WalletSignDemo";
 import { useToast } from "@/hooks/use-toast";
 import walletIcon from "@/assets/wallet-icon.jpg";
 
@@ -233,12 +234,20 @@ const Demo = () => {
             )}
           </Card>
 
+          {/* Live Wallet Integration */}
+          <div className="mt-12">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              Try Real Wallet Signing
+            </h2>
+            <WalletSignDemo />
+          </div>
+
           {/* Info Card */}
           <Card className="mt-8 p-6 bg-primary/5 border-primary/20">
             <p className="text-sm text-muted-foreground">
-              <strong className="text-foreground">Note:</strong> This is a simulated demo for demonstration purposes. 
-              In a real implementation, this would connect to actual blockchain wallets like MetaMask, 
-              WalletConnect, or Coinbase Wallet, and verify cryptographic signatures on the backend.
+              <strong className="text-foreground">Note:</strong> The demo above is simulated for educational purposes. 
+              The "Try Real Wallet Signing" section below uses actual Web3 wallet integration with MetaMask 
+              or other compatible wallets to demonstrate real cryptographic signatures.
             </p>
           </Card>
         </div>
