@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# wallet-sign-repo
 
 ## Project info
 
