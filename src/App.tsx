@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
 import Features from "./pages/Features";
 import Demo from "./pages/Demo";
+import DocumentSigning from "./pages/DocumentSigning";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/features" element={<Features />} />
           <Route path="/demo" element={<Demo />} />
+          <Route path="/document-signing" element={<DocumentSigning />} />
           <Route path="/about" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
